@@ -1,2 +1,2 @@
 ﻿  App.cpp
-c:\dev\tutorials\directx11\engine\engine\app.cpp(55): error C2143: syntax error: missing ';' before '}'
+  Engine.vcxproj -> C:\dev\tutorials\DirectX11\Engine\Debug\Engine\Engine.exe

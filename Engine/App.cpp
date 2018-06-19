@@ -22,6 +22,7 @@ public :
 		window->PointerPressed += ref new TypedEventHandler<CoreWindow^, PointerEventArgs^>(this, &App::OnPointerPressed);
 		window->KeyDown += ref new TypedEventHandler<CoreWindow^, KeyEventArgs^>(this, &App::OnKeyDown);
 		window->KeyUp += ref new TypedEventHandler<CoreWindow^, KeyEventArgs^>(this, &App::OnKeyUp);
+		window->PointerWheelChanged += ref new TypedEventHandler<CoreWindow^, PointerEventArgs^>(this, &App::OnPointerWheelChanged);
 	}
 	virtual void Load(String^ EntryPoint) {}
 	virtual void Run () {
@@ -45,6 +46,7 @@ public :
 		ShowKeyUpDialogBox(args->VirtualKey);
 	}
 	void OnPointerWheelChanged(CoreWindow^ sender, PointerEventArgs^ args) {
+		//One notch of the mouse wheel is 120 in mouse wheel delta
 		int wheel = args->CurrentPoint->Properties->MouseWheelDelta;
 	}
 private:
