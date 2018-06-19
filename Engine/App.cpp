@@ -17,6 +17,8 @@ public :
 	virtual void Initialize(CoreApplicationView^ appView)
 	{
 		appView->Activated += ref new TypedEventHandler<CoreApplicationView^, IActivatedEventArgs^>(this, &App::OnActivated);
+		CoreApplication::Suspending += ref new EventHandler<SuspendingEventArgs^>(this, &App::OnSuspending);
+		CoreApplication::Resuming += ref new EventHandler<Object^>(this, &App::OnResuming);
 	}
 	virtual void SetWindow(CoreWindow^ window){
 		window->PointerPressed += ref new TypedEventHandler<CoreWindow^, PointerEventArgs^>(this, &App::OnPointerPressed);
@@ -48,6 +50,13 @@ public :
 	void OnPointerWheelChanged(CoreWindow^ sender, PointerEventArgs^ args) {
 		//One notch of the mouse wheel is 120 in mouse wheel delta
 		int wheel = args->CurrentPoint->Properties->MouseWheelDelta;
+	}
+
+	void OnSuspending(Object^ sender, SuspendingEventArgs^ args) {
+
+	}
+	void OnResuming(Object^ sender, Object^ args) {
+
 	}
 private:
 	void ShowKeyDownDialogBox(const VirtualKey& key) {
